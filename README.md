@@ -1,4 +1,4 @@
-# js-alert — Versões jQuery e Vanilla
+# MAlert — Versões jQuery e Vanilla
 
 Uma biblioteca simples para exibir alertas personalizados na tela, com suporte a callback e múltiplos alertas.
 
