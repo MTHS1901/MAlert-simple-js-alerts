@@ -1,6 +1,5 @@
 # MAlert — Versões jQuery e Vanilla
-
-Uma biblioteca simples para exibir alertas personalizados na tela, com suporte a callback e múltiplos alertas.
+Após enfrentar alguns problemas com a charmosa (e problemática) biblioteca `jquery-confirm` — especialmente ao integrá-la em páginas com certas restrições — decidi criar meu próprio sistema de alerta personalizado. Desenvolvi uma solução simples para atender minha necessidade. Resolvi compartilhar aqui, caso também possa ajudar outras pessoas.
 
 ## 📦 Instalação
 
