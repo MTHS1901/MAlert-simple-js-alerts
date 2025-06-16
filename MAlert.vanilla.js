@@ -1,7 +1,6 @@
 let MAlertQueue = [];
 let MAlertCounterID = 0;
 let MAlertCurrentZIndex = 999999;
-
 /**
  * MAlert(text, action, title)
  * - text: string obrigatório
