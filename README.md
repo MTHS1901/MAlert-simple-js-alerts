@@ -31,7 +31,7 @@ MAlert("Texto do alerta", null, "Sou um título 👑");
 ### Alerta com título e ação após o fechamento
 
 ```javascript
-MAlert("Se me fechar, vou redirecionar para o Google",function() { location.href = 'https://google.com'; },"Sou um título 👑");
+MAlert("Se me fechar, vou redirecionar para o Google", function() {location.href = 'https://google.com';}, "Sou um título 👑");
 ```
 
 ### Alerta que remove o botão x, no lugar da função passe a string "lock"
