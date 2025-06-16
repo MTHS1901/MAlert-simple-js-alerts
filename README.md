@@ -24,7 +24,7 @@ Inclua o jQuery e o script da biblioteca no seu HTML:
 
 ```javascript
 MAlert("Texto do alerta");
-/* ou */
+/* ou inclua um titulo, passe o parametro null para a função (caso não tenha função) */
 MAlert("Texto do alerta", null, "Sou um título 👑");
 ```
 
