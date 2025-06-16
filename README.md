@@ -24,7 +24,9 @@ Inclua o jQuery e o script da biblioteca no seu HTML:
 ### Alerta simples com botão "X" para fechar
 
 ```javascript
-MAlert("Texto do alerta"); ou MAlert("Texto do alerta", null, "Sou um título 👑");
+MAlert("Texto do alerta");
+/* ou */
+MAlert("Texto do alerta", null, "Sou um título 👑");
 ```
 
 ### Alerta com título e ação após o fechamento
