@@ -24,18 +24,21 @@ Inclua o jQuery e o script da biblioteca no seu HTML:
 ### Alerta simples com botão "X" para fechar
 
 ```javascript
-MAlert("Texto do alerta");
+MAlert("Texto do alerta"); ou MAlert("Texto do alerta", null, "Sou um título 👑");
 ```
 
 ### Alerta com título e ação após o fechamento
 
 ```javascript
-MAlert(
-  "Se me fechar, vou redirecionar para o Google",
-  function() { location.href = 'https://google.com'; },
-  "Sou um título 👑"
-);
+MAlert("Se me fechar, vou redirecionar para o Google",function() { location.href = 'https://google.com'; },"Sou um título 👑");
 ```
+
+### Alerta que remove o botão x, no lugar da função passe a string "lock"
+
+```javascript
+MAlert("Sou um alerta que não pode ser fechado", "lock", "Sou um título 👑");
+```
+
 
 ### Remover todos os alertas da tela
 
