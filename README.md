@@ -10,13 +10,13 @@ Inclua o jQuery e o script da biblioteca no seu HTML:
 
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="js-alert.jquery.js"></script>
+<script src="MAlert.jquery.min.js"></script>
 ```
 
 ### Versão Vanilla (sem jQuery)
 
 ```html
-<script src="js-alert.vanilla.js"></script>
+<script src="MAlert.vanilla.min.js"></script>
 ```
 
 ## ⚡ Exemplos de uso
