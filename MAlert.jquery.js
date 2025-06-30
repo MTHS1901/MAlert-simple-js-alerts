@@ -32,16 +32,37 @@ let MAlertCurrentZIndex = 0;
 
 /**
  * Cria e exibe um alerta modal customizado
- * @param {string} MAlertContent - Conteúdo HTML/texto do alerta (obrigatório)
- * @param {function|string} action - Função executada ao fechar ou 'lock' para bloquear fechamento (opcional)
- * @param {string} title - Título do alerta (opcional)
+ * @param {object|string} options - Objeto com configurações ou string com conteúdo (compatibilidade)
+ * @param {function|string} action - Função executada ao fechar ou 'lock' (apenas para compatibilidade)
+ * @param {string} title - Título do alerta (apenas para compatibilidade)
  */
-function MAlert(MAlertContent, action = null, title = '') {
-	// Verifica se o alerta deve ser bloqueado (não pode ser fechado)
-	const lock = action === 'lock';
-	
-	// Define a ação real apenas se for uma função válida e não estiver bloqueado
-	const realAction = (!lock && typeof action === 'function') ? action : null;
+function MAlert(options, action = null, title = '') {
+	let MAlertContent, realAction, alertTitle, lock;
+
+	// Verifica se o primeiro parâmetro é um objeto (nova sintaxe)
+	if (typeof options === 'object' && options !== null) {
+		// Nova sintaxe com objeto
+		MAlertContent = options.body || '';
+		alertTitle = options.title || '';
+		
+		// Se function é false, trata como lock
+		if (options.function === false) {
+			lock = true;
+			realAction = null;
+		} else if (typeof options.function === 'function') {
+			lock = false;
+			realAction = options.function;
+		} else {
+			lock = false;
+			realAction = null;
+		}
+	} else {
+		// Sintaxe antiga (compatibilidade)
+		MAlertContent = options;
+		alertTitle = title;
+		lock = action === 'lock';
+		realAction = (!lock && typeof action === 'function') ? action : null;
+	}
 
 	// Gera ID único para este alerta
 	MAlertCounterID++;
@@ -93,7 +114,7 @@ function MAlert(MAlertContent, action = null, title = '') {
             <div class="mAlertModal" style="font-size: 14px; box-shadow: 0 0 9999px 9999px #2121217a; background: #f7f7f7f7; max-width: 500px; width: 90%; max-height: 80vh; padding: 20px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1); text-align: center; color: black !important; border-radius: 4px; transition: transform 200ms ease-out; display: flex; flex-direction: column;">
                 
                 <!-- Título do alerta (exibido apenas se fornecido) -->
-                <h2 style="margin: 0; font-weight: 600; font-size: 1.4em; color: #743ad5; display: ${title && title.trim() !== '' ? 'block' : 'none'}; flex-shrink: 0;">${title || ''}</h2>
+                <h2 style="margin: 0; font-weight: 600; font-size: 1.4em; color: #743ad5; display: ${alertTitle && alertTitle.trim() !== '' ? 'block' : 'none'}; flex-shrink: 0;">${alertTitle || ''}</h2>
 
                 <!-- Área de conteúdo com scroll automático -->
                 <div class="malert-content" style="text-align: center; margin: 10px 0; color: black !important; overflow-y: auto; max-height: calc(80vh - 100px); flex-grow: 1; padding-right: 4px;">
@@ -131,8 +152,8 @@ function MAlert(MAlertContent, action = null, title = '') {
 		MAlertQueue = MAlertQueue.filter(alert => alert.id !== alertId);
 
 		// Executa a função de callback se fornecida
-		if (typeof action === 'function') {
-			action();
+		if (typeof realAction === 'function') {
+			realAction();
 		}
 	});
 
