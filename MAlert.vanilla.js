@@ -1,4 +1,4 @@
-/*! MALert - Simple JS Alerts | MIT — use freely, with or without modification. | Developed by: github.com/MTHS1901/MAlert-simple-js-alerts */
+ /*! MALert - Simple JS Alerts | MIT — use freely, with or without modification. | Developed by: github.com/MTHS1901/MAlert-simple-js-alerts */
 
 /**
  * Obtém o maior valor de z-index presente na página para garantir que 
