@@ -1,6 +1,6 @@
 /*! MALert - Simple JS Alerts | MIT — use freely, with or without modification. | Developed by: github.com/MTHS1901/MAlert-simple-js-alerts */
 
-/**
+/*
  * Obtém o maior valor de z-index presente na página para garantir que 
  * o alerta seja sempre exibido acima de todos os outros elementos
  * @returns {number|null} O maior z-index encontrado ou null se nenhum for definido
