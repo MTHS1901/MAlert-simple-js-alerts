@@ -32,37 +32,24 @@ let MAlertCurrentZIndex = 0;
 
 /**
  * Cria e exibe um alerta modal customizado
- * @param {object|string} options - Objeto com configurações ou string com conteúdo (compatibilidade)
- * @param {function|string} action - Função executada ao fechar ou 'lock' (apenas para compatibilidade)
- * @param {string} title - Título do alerta (apenas para compatibilidade)
+ * @param {object} options - Objeto com configurações do alerta
+ * @param {string} options.title - Título do alerta (opcional)
+ * @param {string} options.body - Conteúdo do alerta
+ * @param {function} options.function - Função executada ao fechar (opcional)
+ * @param {boolean} options.hideClose - Se true, oculta o botão de fechar (opcional)
  */
-function MAlert(options, action = null, title = '') {
-	let MAlertContent, realAction, alertTitle, lock;
-
-	// Verifica se o primeiro parâmetro é um objeto (nova sintaxe)
-	if (typeof options === 'object' && options !== null) {
-		// Nova sintaxe com objeto
-		MAlertContent = options.body || '';
-		alertTitle = options.title || '';
-		
-		// Se function é false, trata como lock
-		if (options.function === false) {
-			lock = true;
-			realAction = null;
-		} else if (typeof options.function === 'function') {
-			lock = false;
-			realAction = options.function;
-		} else {
-			lock = false;
-			realAction = null;
-		}
-	} else {
-		// Sintaxe antiga (compatibilidade)
-		MAlertContent = options;
-		alertTitle = title;
-		lock = action === 'lock';
-		realAction = (!lock && typeof action === 'function') ? action : null;
+function MAlert(options = {}) {
+	// Validação básica - deve ser um objeto
+	if (typeof options !== 'object' || options === null) {
+		console.error('MAlert: O parâmetro deve ser um objeto com as configurações');
+		return;
 	}
+
+	// Extrai as configurações do objeto
+	const MAlertContent = options.body || '';
+	const alertTitle = options.title || '';
+	const realAction = typeof options.function === 'function' ? options.function : null;
+	const hideClose = options.hideClose === true;
 
 	// Gera ID único para este alerta
 	MAlertCounterID++;
@@ -121,8 +108,8 @@ function MAlert(options, action = null, title = '') {
                     <div>${MAlertContent}</div>
                 </div>
                 
-                <!-- Botão de fechar (oculto quando lock=true) -->
-                <button class="mAlertClose" style="width: 30px; height: 30px; border: none; font-size: 20px; position: absolute; top: 5px; color: #575757; right: 9px; cursor: pointer; background: transparent; display: ${lock ? 'none' : 'inline-block'}; z-index: 1;">×</button>
+                <!-- Botão de fechar (oculto quando hideClose=true) -->
+                <button class="mAlertClose" style="width: 30px; height: 30px; border: none; font-size: 20px; position: absolute; top: 5px; color: #575757; right: 9px; cursor: pointer; background: transparent; display: ${hideClose ? 'none' : 'inline-block'}; z-index: 1;">×</button>
                 
             </div>
         </div>
@@ -161,7 +148,7 @@ function MAlert(options, action = null, title = '') {
 	MAlertQueue.push({
 		id: alertId,
 		action: realAction,
-		lock: lock
+		hideClose: hideClose
 	});
 }
 
