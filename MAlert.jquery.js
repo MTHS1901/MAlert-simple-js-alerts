@@ -35,7 +35,7 @@ let MAlertCurrentZIndex = 0;
  * @param {object} options - Objeto com configurações do alerta
  * @param {string} options.title - Título do alerta (opcional)
  * @param {string} options.body - Conteúdo do alerta
- * @param {function} options.function - Função executada ao fechar (opcional)
+ * @param {function} options.onClose - Função executada ao fechar (opcional)
  * @param {boolean} options.hideClose - Se true, oculta o botão de fechar (opcional)
  */
 function MAlert(options = {}) {
@@ -48,7 +48,7 @@ function MAlert(options = {}) {
 	// Extrai as configurações do objeto
 	const MAlertContent = options.body || '';
 	const alertTitle = options.title || '';
-	const realAction = typeof options.function === 'function' ? options.function : null;
+	const callback = typeof options.onClose === 'function' ? options.onClose : null;
 	const hideClose = options.hideClose === true;
 
 	// Gera ID único para este alerta
@@ -139,15 +139,15 @@ function MAlert(options = {}) {
 		MAlertQueue = MAlertQueue.filter(alert => alert.id !== alertId);
 
 		// Executa a função de callback se fornecida
-		if (typeof realAction === 'function') {
-			realAction();
+		if (typeof callback === 'function') {
+			callback();
 		}
 	});
 
 	// Adiciona o alerta à fila para controle e gerenciamento
 	MAlertQueue.push({
 		id: alertId,
-		action: realAction,
+		action: callback,
 		hideClose: hideClose
 	});
 }
