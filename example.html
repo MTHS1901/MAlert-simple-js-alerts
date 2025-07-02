@@ -1,12 +1,9 @@
-<!-- vanilla version -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="https://raw.githubusercontent.com/mths1901/MAlert-simple-js-alerts/main/MAlert.jquery.js"></script>
 
+<button onclick='MAlert({title: "Sou um título 👑",body: "Texto do alerta"});'>Alerta simples com botão "X" para fechar</button>
 
-<button onclick='MAlert("Texto do alerta", null, "Sou um título 👑");'>Alerta simples com botão "X" para fechar</button>
+<button onclick='MAlert({title: "Sou um título 👑",body: "Se me fechar, vou redirecionar para o Google",onClose: function() {location.href = 'https://google.com';}});'>Alerta com título e ação após o fechamento</button>
 
-<button onclick='MAlert("Se me fechar, vou redirecionar para o Google",function() { location.href = "https://google.com"; },"Sou um título 👑");'>Alerta com título e ação após o fechamento</button>
+<button onclick='MAlert({title: "Sou um título 👑",body: "Sou um alerta que não pode ser fechado",hideClose: true});'>Alerta que remove o botão x</button>
 
-<button onclick='MAlert("Sou um alerta que não pode ser fechado", "lock", "Sou um título 👑");'>Alerta que remove o botão x</button>
-
-<!-- please, don't use onclick inside buttons :p -->
