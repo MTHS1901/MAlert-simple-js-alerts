@@ -45,30 +45,13 @@ MAlert({
 });
 ```
 
-### Uso com parâmetros diretos (compatibilidade com versões anteriores)
-```javascript
-// Alerta simples com botão "X" para fechar
-MAlert("Texto do alerta");
-
-// Alerta com título (passe null para a função caso não tenha callback)
-MAlert("Texto do alerta", null, "Sou um título 👑");
-
-// Alerta com título e ação após o fechamento
-MAlert("Se me fechar, vou redirecionar para o Google", function() {
-    location.href = 'https://google.com';
-}, "Sou um título 👑");
-
-// Alerta que remove o botão x (passe "lock" no lugar da função)
-MAlert("Sou um alerta que não pode ser fechado", "lock", "Sou um título 👑");
-```
-
 ### Remover todos os alertas da tela
 ```javascript
 removeAllMAlerts();
 ```
 
 ## 🧪 Demonstração
-Você pode ver uma demonstração ao vivo [aqui](#) (DEPOIS)
+Você pode ver uma demonstração ao vivo [aqui]([#](https://mths1901.w3spaces-preview.com/MAlert-github/index-1.html))
 
 ## ⚙️ Como funciona
 - Cada alerta é empilhado na tela com `z-index` crescente.
