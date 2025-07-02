@@ -51,7 +51,7 @@ removeAllMAlerts();
 ```
 
 ## 🧪 Demonstração
-Você pode ver uma demonstração ao vivo [https://mths1901.w3spaces-preview.com/MAlert-github/index-1.html]
+Você pode ver uma demonstração ao vivo [https://htmlpreview.github.io/?https://github.com/MTHS1901/MAlert-simple-js-alerts/blob/main/example.html]
 
 ## ⚙️ Como funciona
 - Cada alerta é empilhado na tela com `z-index` crescente.
