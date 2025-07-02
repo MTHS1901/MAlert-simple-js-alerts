@@ -51,7 +51,7 @@ removeAllMAlerts();
 ```
 
 ## 🧪 Demonstração
-Você pode ver uma demonstração ao vivo [aqui]([#](https://mths1901.w3spaces-preview.com/MAlert-github/index-1.html))
+Você pode ver uma demonstração ao vivo [https://mths1901.w3spaces-preview.com/MAlert-github/index-1.html]
 
 ## ⚙️ Como funciona
 - Cada alerta é empilhado na tela com `z-index` crescente.
