@@ -5,6 +5,8 @@
  * o alerta seja sempre exibido acima de todos os outros elementos
  * @returns {number|null} O maior z-index encontrado ou null se nenhum for definido
  */
+
+
 function getMaxZIndex() {
 	let maxZIndex = -Infinity;
 	
@@ -172,3 +174,6 @@ function removeAllMAlerts() {
 	// Limpa a fila de alertas
 	MAlertQueue = [];
 }
+
+window.malert = MAlert;
+window.removeallmalerts = removeAllMAlerts;
