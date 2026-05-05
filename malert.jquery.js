@@ -122,7 +122,7 @@ function MAlert(options = {}) {
 	// ── Botão X: ícone SVG ou contador ──────────────────────────────────────
 	const closeBtnInner = closeDelay > 0
 		? `<span class="malert-close-counter">${closeDelay}</span>`
-		: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+		: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 		        stroke="#575757" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 		     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
 		   </svg>`;
